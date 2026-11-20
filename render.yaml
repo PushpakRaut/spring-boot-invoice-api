@@ -8,11 +8,7 @@ services:
     envVars:
       - key: JWT_SECRET
         generateValue: true          # Render creates a random secret
-      - key: DATABASE_URL            # jdbc:postgresql://<neon-host>/<db>?sslmode=require
-        sync: false
-      - key: DATABASE_USER
-        sync: false
-      - key: DATABASE_PASSWORD
+      - key: DATABASE_URL            # paste Neon's connection string as-is: postgresql://user:pass@host/db?sslmode=require
         sync: false
       - key: CORS_ORIGINS
         value: https://pushpak-invoice-dashboard.vercel.app

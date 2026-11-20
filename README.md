@@ -33,8 +33,7 @@ docker run -p 8080:8080 -e JWT_SECRET=$(openssl rand -hex 32) invoice-api
 ```
 
 ## Deploy (free, no credit card)
-1. **Database:** create a free Postgres on [Neon](https://neon.tech). From its connection string `postgresql://USER:PASSWORD@HOST/DB?sslmode=require` set
-   `DATABASE_URL=jdbc:postgresql://HOST/DB?sslmode=require`, `DATABASE_USER=USER`, `DATABASE_PASSWORD=PASSWORD`.
+1. **Database:** create a free Postgres on [Neon](https://neon.tech) and copy its connection string (`postgresql://USER:PASSWORD@HOST/DB?sslmode=require`). Paste it as `DATABASE_URL` unchanged.
 2. **API:** on [Render](https://render.com) choose *New → Blueprint* and pick this repo. `render.yaml` creates a free Docker web service and a random `JWT_SECRET`.
 3. Set `CORS_ORIGINS` to your dashboard's URL.
 

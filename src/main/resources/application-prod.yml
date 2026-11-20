@@ -1,0 +1,6 @@
+# Used by the Docker image. No defaults: the app refuses to start without a real database.
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}

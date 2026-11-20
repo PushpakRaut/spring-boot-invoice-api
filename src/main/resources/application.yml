@@ -1,0 +1,33 @@
+# Local dev uses in-memory H2. In production set DATABASE_URL / DATABASE_USER / DATABASE_PASSWORD (e.g. Neon Postgres).
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:invoices;DB_CLOSE_DELAY=-1}
+    username: ${DATABASE_USER:sa}
+    password: ${DATABASE_PASSWORD:}
+  mvc:
+    problemdetails:
+      enabled: true   # errors return {"detail": "..."} so the dashboard can show the real reason
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+server:
+  port: ${PORT:8080}
+  # Behind a hosting proxy (Render), set FORWARD_HEADERS=native so rate limits see the real client IP
+  forward-headers-strategy: ${FORWARD_HEADERS:none}
+
+app:
+  jwt:
+    # Required, 32+ characters. No default on purpose: a default in a public repo lets anyone forge tokens.
+    secret: ${JWT_SECRET}
+    expiration-minutes: 120
+  cors-origins: ${CORS_ORIGINS:http://localhost:3000}
+  auth-attempts-per-ip: 10   # login + register attempts per window
+  auth-window-minutes: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

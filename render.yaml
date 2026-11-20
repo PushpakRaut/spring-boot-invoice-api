@@ -11,6 +11,6 @@ services:
       - key: DATABASE_URL            # paste Neon's connection string as-is: postgresql://user:pass@host/db?sslmode=require
         sync: false
       - key: CORS_ORIGINS
-        value: https://pushpak-invoice-dashboard.onrender.com
+        value: https://pushpak-invoice-dashboard.vercel.app,https://pushpak-invoice-dashboard.onrender.com
       - key: FORWARD_HEADERS
         value: native
